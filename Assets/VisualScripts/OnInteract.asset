@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e66c6366d904e98bc83428217d4fd7, type: 3}
+  m_Name: OnInteract
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"Kind":"Flow","collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[{"key":"onInteract","label":null,"summary":"Fires
+      when isInteracted Event is Triggered","hideLabel":false},{"key":"onUninteract","label":null,"summary":null,"hideLabel":false}],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":"OnInteract","summary":"Generic.
+      Fires when isInteracted Custom Event is Triggered on Object","pan":{"x":-75.47776,"y":-60.83892},"zoom":1.0,"elements":[{"defaultValues":{},"position":{"x":-26.0,"y":-238.0},"guid":"bb2a57ba-e5bb-4ce3-a10a-0d05b18148ba","$version":"A","$type":"Unity.VisualScripting.GraphOutput","$id":"11"},{"argumentCount":0,"coroutine":false,"defaultValues":{"target":null,"name":{"$content":"isInteracted","$type":"System.String"}},"position":{"x":-401.0,"y":-242.0},"guid":"15e8ab3b-f719-46a1-8359-631e1277bbab","$version":"A","$type":"Unity.VisualScripting.CustomEvent","$id":"13"},{"argumentCount":0,"coroutine":false,"defaultValues":{"target":null,"name":{"$content":"isUnInteracted","$type":"System.String"}},"position":{"x":-401.0,"y":-105.0},"guid":"9541f5a5-e569-4672-9efd-e60765e989ac","$version":"A","$type":"Unity.VisualScripting.CustomEvent","$id":"15"},{"sourceUnit":{"$ref":"13"},"sourceKey":"trigger","destinationUnit":{"$ref":"11"},"destinationKey":"onInteract","guid":"0b4e70f4-60d8-4359-a5e2-a16a9d079901","$type":"Unity.VisualScripting.ControlConnection"},{"sourceUnit":{"$ref":"15"},"sourceKey":"trigger","destinationUnit":{"$ref":"11"},"destinationKey":"onUninteract","guid":"f9c27858-4d00-4aed-bcd7-ff3c5b283275","$type":"Unity.VisualScripting.ControlConnection"}],"$version":"A"}}'
+    _objectReferences: []
