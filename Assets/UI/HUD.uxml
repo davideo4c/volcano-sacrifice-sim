@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/HUDStyle.uss?fileID=7433441132597879392&amp;guid=087f2cb2150169e448e5588697cde11b&amp;type=3#HUDStyle" />
+    <ui:VisualElement name="HUDContainer" style="width: 100%; height: 100%;">
+        <ui:VisualElement name="Reticle" class="reticle" style="justify-content: center; align-items: center; position: absolute; left: 50%; right: 50%; bottom: 50%; top: 50%; background-color: rgb(255, 255, 255); width: 2px; height: 2px;" />
+    </ui:VisualElement>
+</ui:UXML>
