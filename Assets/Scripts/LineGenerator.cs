@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LineGenerator : MonoBehaviour
 {
-
+    // Variable declarations
     public int lengthOfLineRenderer = 20;
     public float xScale = 1.0f;
     public float heightScale = 1.0f;
     public float noiseXScale = 1.0f;
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector] public LineRenderer lineRenderer;
+
+    public void GenerateLine()
     {
         // Create new lineRenderer on gameObject, adding a default sprite material and set it's length.
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -24,7 +25,7 @@ public class LineGenerator : MonoBehaviour
         float height = 0f;
         for (int i = 0; i < lengthOfLineRenderer; i++)
         {
-            height = (heightScale * Mathf.PerlinNoise(noiseXScale * i/lengthOfLineRenderer, 0.0f)) - heightScale/2;
+            height = (heightScale * Mathf.PerlinNoise(noiseXScale * i / lengthOfLineRenderer, 0.0f)) - heightScale / 2;
 
             linePoints[i] = new Vector3(i * xScale, height, 0.0f);
         }

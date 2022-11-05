@@ -5,13 +5,16 @@ public class LineAnimator : MonoBehaviour
 {
     [SerializeField] private float animationDuration = 5f;
 
-    private LineRenderer lineRenderer;
     private Vector3[] linePoints;
     private Vector3 lineStart;
     private int pointsCount;
+    [HideInInspector] public LineRenderer lineRenderer;
 
     private void Start()
     {
+        LineGenerator lineGenerator = GetComponent<LineGenerator>();
+        lineGenerator.GenerateLine();
+
         lineRenderer = GetComponent<LineRenderer>();
 
         // Store a copy of lineRenderer's points in linePoints array
@@ -23,17 +26,23 @@ public class LineAnimator : MonoBehaviour
             linePoints[i] = lineRenderer.GetPosition(i);
             lineRenderer.SetPosition(i, lineStart);
         }
-
-        // Start CoRoutine Method
-        StartCoroutine(AnimateLine());
+        StartLineAnimation();
 
         // Rotate Line Around Up By 180 pivoting on starting position
         gameObject.transform.RotateAround(lineStart, Vector3.up, 180);
 
     }
 
+    private void StartLineAnimation()
+    {
+
+        // Start CoRoutine Method
+        StartCoroutine(routine: AnimateLine());
+    }
+
     private IEnumerator AnimateLine()
     {
+        lineRenderer = GetComponent<LineRenderer>();
         float segmentDuration = animationDuration / pointsCount;
 
         for (int i = 0; i < pointsCount - 1; i++)
