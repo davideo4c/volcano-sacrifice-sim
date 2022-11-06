@@ -26,10 +26,10 @@ public class LineAnimator : MonoBehaviour
             linePoints[i] = lineRenderer.GetPosition(i);
             lineRenderer.SetPosition(i, lineStart);
         }
+
         StartLineAnimation();
 
         // Rotate Line Around Up By 180 pivoting on starting position
-        gameObject.transform.RotateAround(lineStart, Vector3.up, 180);
 
     }
 
@@ -64,8 +64,10 @@ public class LineAnimator : MonoBehaviour
 
                 yield return null;
             }
+            // Move forward the transform component incremently between the offsets.
+            float xOffset = GetComponent<LineGenerator>().xOffset;
+            float lengthOfLineRenderer = GetComponent<LineGenerator>().lengthOfLineRenderer;
+            transform.Translate(-xOffset / lengthOfLineRenderer, 0, 0);
         }
-
-
     }
 }

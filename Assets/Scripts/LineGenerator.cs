@@ -9,6 +9,7 @@ public class LineGenerator : MonoBehaviour
     public float xScale = 1.0f;
     public float heightScale = 1.0f;
     public float noiseXScale = 1.0f;
+    [HideInInspector] public float xOffset = 0.0f;
     [HideInInspector] public LineRenderer lineRenderer;
 
     public void GenerateLine()
@@ -16,8 +17,12 @@ public class LineGenerator : MonoBehaviour
         // Create new lineRenderer on gameObject, adding a default sprite material and set it's length.
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.black;
+        lineRenderer.endColor = Color.red;
         lineRenderer.widthMultiplier = 0.2f;
         lineRenderer.positionCount = lengthOfLineRenderer;
+        lineRenderer.alignment = LineAlignment.TransformZ;
+        lineRenderer.useWorldSpace = false;
 
         // Create a series of points sampling Perlin noise.
 
@@ -29,7 +34,14 @@ public class LineGenerator : MonoBehaviour
 
             linePoints[i] = new Vector3(i * xScale, height, 0.0f);
         }
+
         lineRenderer.SetPositions(linePoints);
+
+        // Offset Line Renderer by total size of the Renderer on the X-Axis
+        xOffset = lengthOfLineRenderer * xScale * transform.lossyScale[0];
+        transform.Translate(Vector3.right * xOffset);
+
+
     }
 
     // Update is called once per frame
