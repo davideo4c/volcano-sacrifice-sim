@@ -1,29 +1,26 @@
 using System;
 using System.Collections.Generic;
+using Unity;
+using UnityEngine;
 
-public class Citizen
+public class Citizen : MonoBehaviour
 {
-    public string _name;
+    public Demographics demographics = new Demographics();
+    public DemographicsProfile demographicsProfile;
+    public bool isSacrificed;
 
-    public string surname;
-    public enum FamilyRole
+    public void Awake()
     {
-        Father,Mother,Son,Daughter,Husband,Wife
+        demographics.demographicsProfile = demographicsProfile;
     }
 
-    public int age;
-
-    public bool isMarried;
-
-    public bool isOrphaned;
-    public string birthplace;
-    public string nationality;
-    public enum Education
+    public void Start()
     {
-        None,Primary,Secondary,Graduate,Doctorate
+        // Establish init conditions, not sacrificed
+        isSacrificed = false;
+        demographics.GenerateDemographics();
+        Debug.Log("The generated age is " + demographics.age + " they were born in " + demographics.birthplace +
+            ". Their sex is " + demographics.citizenSex + "and a peerage of " + demographics.peerage);
     }
 
-    public string employer;
-
-    public List<Citizen> children;
 }

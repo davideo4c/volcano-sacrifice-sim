@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5e92bc90b31494f877fdfb6ac0b322, type: 3}
+  m_Name: DemographicsProfile
+  m_EditorClassIdentifier: 
+  ageRange:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 12
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.29333836
+    - serializedVersion: 3
+      time: 0.10056865
+      value: 17.070868
+      inSlope: 62.673496
+      outSlope: 62.673496
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.6690646
+      outWeight: 0.27684486
+    - serializedVersion: 3
+      time: 0.8254957
+      value: 50.26181
+      inSlope: 111.88941
+      outSlope: 111.88941
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.48413026
+      outWeight: 0.44017634
+    - serializedVersion: 3
+      time: 1
+      value: 90
+      inSlope: 11468.534
+      outSlope: 11468.534
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.0042980597
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  birthplaces:
+  - Britain
+  - United States
+  - France
+  - Germany
+  - Spain
+  - Italy
+  - Balkans
+  - Russia
+  - Kazakhs
+  - Scotland
+  - Africa
+  - Asia
+  - Oceania
+  - Indies
+  - Carribean
+  - Latin America
+  - Canada
