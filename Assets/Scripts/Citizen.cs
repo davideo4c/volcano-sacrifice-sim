@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using Unity;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Citizen : MonoBehaviour
 {
     public Demographics demographics = new Demographics();
     public DemographicsProfile demographicsProfile;
     public bool isSacrificed;
+    public InputAction mouseDown;
 
     public void Awake()
     {
@@ -19,9 +21,22 @@ public class Citizen : MonoBehaviour
         // Establish init conditions, not sacrificed
         isSacrificed = false;
         demographics.GenerateDemographics();
+        LogDemographics();
+    }
+
+    public void Update()
+    {
+        if (Mouse.current.leftButton.isPressed)
+        {
+            demographics.GenerateDemographics();
+            LogDemographics();
+        }
+    }
+    public void LogDemographics()
+    {
         Debug.Log("The generated age is " + demographics.age + " they were born in " + demographics.birthplace +
-            ". Their sex is " + demographics.citizenSex + "and a peerage of " + demographics.peerage + "" +
-			"it is " + demographics.isOrphaned + " that they are orphaned and " + demographics.isMarried + " that they are married.");
+         ". Their sex is " + demographics.citizenSex + "with a peerage of " + demographics.peerage + ". " +
+         "it is also " + demographics.isOrphaned + " that they are orphaned and " + demographics.isMarried + " that they are married." + "They have " + demographics.education + " education.");
     }
 
 }

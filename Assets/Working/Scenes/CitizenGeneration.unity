@@ -257,3 +257,20 @@ MonoBehaviour:
   demographicsProfile: {fileID: 11400000, guid: 2329f2b7ade1b1249b6efd75eb268c25,
     type: 2}
   isSacrificed: 0
+  mouseDown:
+    m_Name: Mouse Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fa8d48d4-081d-4e67-9a6a-2504393798c6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3518ea4c-38d6-450e-b9ec-c7ada7d90d6e
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Mouse Down
+      m_Flags: 0
+    m_Flags: 0

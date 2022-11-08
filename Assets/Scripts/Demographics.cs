@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Demographics
 {
+    // --------------------------- VARIABLES -------------------------------- //
     public string citizenName;
     public string surname;
     public string birthplace;
@@ -19,8 +20,47 @@ public class Demographics
     public enum Education { None, Primary, Secondary, Graduate, Doctorate };
     public Education education;
     public string occupation;
+
+    public bool isCriminal;
+    public string[] criminalHistory;
+
     public Texture2D headshot;
     public DemographicsProfile demographicsProfile;
+
+    // ----------------------------- HELPER STRUCTS --------------------------- //
+
+    //helper structure
+    public struct RandomSelection
+    {
+        private int minValue;
+        private int maxValue;
+        public float probability;
+
+        public RandomSelection(int minValue, int maxValue, float probability)
+        {
+            this.minValue = minValue;
+            this.maxValue = maxValue;
+            this.probability = probability;
+        }
+
+        public int GetValue() { return Random.Range(minValue, maxValue + 1); }
+    }
+
+    public int GetRandomValue(params RandomSelection[] selections)
+    {
+        float rand = Random.value;
+        float currentProb = 0;
+        foreach (var selection in selections)
+        {
+            currentProb += selection.probability;
+            if (rand <= currentProb)
+                return selection.GetValue();
+        }
+
+        //will happen if the input's probabilities sums to less than 1
+        //throw error here if that's appropriate
+        return -1;
+    }
 
     public void OnAwake()
     {
@@ -48,12 +88,20 @@ public class Demographics
     public void GetSex()
     {
         // STILL NEEDS TO BE WEIGHTED. OR DOES IT? I DON'T GIVE A FUCK
-        citizenSex = (Sex)Mathf.Round(Random.Range(0, 2));
+        citizenSex = (Sex)Mathf.Round(Random.Range(0, 3));
     }
 
     public void GetPeerage()
     {
-        // Need a convenient way to iterate over a set of enums or array of things.
+        // 95% chance of note being in the peerage
+        float randSample = Random.value;
+        if (randSample < .95)
+        {
+            peerage = Peerage.None;
+        } else
+        {
+            peerage = (Peerage)(1+Random.Range(0, 3));
+        }
     }
 
     public void GetName(Sex citizenSex, string nationality)
@@ -70,7 +118,14 @@ public class Demographics
 
     public void GetEducation(int age, Peerage peerage)
     {
-        // pseudocode to return education
+        // Scale random chance to be educated by the peerage and age of the citizen.
+        // ----------------------------- NEEDS TO BE FIXED, CURRENTLY A LOT OF 18 YEAR OLD DOCTORATES
+        int random = GetRandomValue(
+            new RandomSelection(0, 1, .5f * ((int)peerage+1)),
+            new RandomSelection(1, 4, .5f * (age-12) * ((int)peerage+1)));
+
+        education = (Education)random;
+
     }
 
     public void GetOccupation(string birthplace, Education education)
