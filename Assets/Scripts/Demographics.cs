@@ -7,7 +7,7 @@ public class Demographics
     public string citizenName;
     public string surname;
     public string birthplace;
-    public enum Peerage { None, Gentlefolk, Esquire, Knight, Reeve, Baron, Earl, Viscount, Duke, Monarch, Emperor };
+    public enum Peerage { None, Esquire, Baron, Duke };
     public Peerage peerage;
     public int age;
     public enum Sex { Male, Female, NB }
@@ -15,6 +15,7 @@ public class Demographics
     public bool isMarried;
     public bool isOrphaned;
     public enum FamilyRole { Father, Mother, Son, Daughter, Husband, Wife };
+    public FamilyRole familyRole;
     public enum Education { None, Primary, Secondary, Graduate, Doctorate };
     public Education education;
     public string occupation;
@@ -79,12 +80,35 @@ public class Demographics
 
     public void GetMarriage(int age)
     {
-        // pseudocode to return marriage
+        if (age < 16)
+        {
+            isMarried = false;
+        } else if (16 < age || age > 55)
+        {
+            if (Random.value * age > (55 - 16))
+            {
+                isMarried = true;
+            }
+            else isMarried = false;
+        } else
+        {
+            if (Random.value * age < 40)
+            {
+                isMarried = true;
+            }
+            else isMarried = false;
+        }
     }
 
     public void GetOrphaned(int age)
     {
         // pseudocode to return orphaned
+        float randSample = Random.value;
+        if (randSample * age > (.7f * 50))
+        {
+            isOrphaned = true;
+        }
+        else isOrphaned = false;
     }
 
     public void GetHeadshot(int age, Sex citizenSex, string nationality, string occupation)

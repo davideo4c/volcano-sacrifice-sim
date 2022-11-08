@@ -20,7 +20,8 @@ public class Citizen : MonoBehaviour
         isSacrificed = false;
         demographics.GenerateDemographics();
         Debug.Log("The generated age is " + demographics.age + " they were born in " + demographics.birthplace +
-            ". Their sex is " + demographics.citizenSex + "and a peerage of " + demographics.peerage);
+            ". Their sex is " + demographics.citizenSex + "and a peerage of " + demographics.peerage + "" +
+			"it is " + demographics.isOrphaned + " that they are orphaned and " + demographics.isMarried + " that they are married.");
     }
 
 }
