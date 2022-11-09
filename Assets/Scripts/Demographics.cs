@@ -5,7 +5,6 @@ using UnityEngine;
 public class Demographics
 {
     // --------------------------- VARIABLES -------------------------------- //
-    public string citizenName;
     public string surname;
     public string birthplace;
     public enum Peerage { None, Esquire, Baron, Duke };
@@ -71,7 +70,7 @@ public class Demographics
         GetBirthplace();
         GetSex();
         GetPeerage();
-        GetName(citizenSex, birthplace);
+        GetName();
         GetAge();
         GetEducation(age, peerage);
         GetOccupation(birthplace, education);
@@ -93,9 +92,9 @@ public class Demographics
 
     public void GetPeerage()
     {
-        // 95% chance of note being in the peerage
+        // 95% chance of not being in the peerage
         float randSample = Random.value;
-        if (randSample < .95)
+        if (randSample < .98)
         {
             peerage = Peerage.None;
         } else
@@ -104,13 +103,15 @@ public class Demographics
         }
     }
 
-    public void GetName(Sex citizenSex, string nationality)
+    public void GetName()
     {
+        int randName = Random.Range(0, demographicsProfile._surnames.Length);
+        surname = demographicsProfile._surnames[randName];
     }
 
     public void GetAge()
     {
-        // pseudocode to return age
+        // Return Age from Sample of Demographics Profile Animation Curve provided
         float randSample = Random.value;
         randSample = demographicsProfile.ageRange.Evaluate(randSample);
         age = (int)Mathf.RoundToInt(randSample);
@@ -121,11 +122,9 @@ public class Demographics
         // Scale random chance to be educated by the peerage and age of the citizen.
         // ----------------------------- NEEDS TO BE FIXED, CURRENTLY A LOT OF 18 YEAR OLD DOCTORATES
         int random = GetRandomValue(
-            new RandomSelection(0, 1, .5f * ((int)peerage+1)),
-            new RandomSelection(1, 4, .5f * (age-12) * ((int)peerage+1)));
-
+            new RandomSelection(0, 1, .5f * (4-(int)peerage)),
+            new RandomSelection(1, 4, .5f * (age-12) * ((int)peerage)));
         education = (Education)random;
-
     }
 
     public void GetOccupation(string birthplace, Education education)

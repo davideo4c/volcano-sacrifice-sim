@@ -10,8 +10,10 @@ public class DemographicsProfile : ScriptableObject
 
     public string[] birthplaces;
 
-    public string[] MaleNames;
-    public string[] FemaleNames;
+    public TextAsset surnameText;
 
-    //public void On
+    public void Awake()
+    {
+        public List<string>_surnames = File.ReadAllLines("Text/surnames.txt");
+    }
 }
