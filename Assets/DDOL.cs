@@ -7,7 +7,7 @@ public class DDOL : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        Debug.Log("Don't destroy on load: " + this.name);
+        DontDestroyOnLoad(gameObject);
+        Debug.Log("Don't destroy on load: " + gameObject.name);
     }
 }
