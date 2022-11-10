@@ -21,45 +21,12 @@ public class Demographics
     public string occupation;
 
     public bool isCriminal;
-    public string[] criminalHistory;
+    public string crime;
 
     public Texture2D headshot;
     public DemographicsProfile demographicsProfile;
 
     // ----------------------------- HELPER STRUCTS --------------------------- //
-
-    //helper structure
-    public struct RandomSelection
-    {
-        private int minValue;
-        private int maxValue;
-        public float probability;
-
-        public RandomSelection(int minValue, int maxValue, float probability)
-        {
-            this.minValue = minValue;
-            this.maxValue = maxValue;
-            this.probability = probability;
-        }
-
-        public int GetValue() { return Random.Range(minValue, maxValue + 1); }
-    }
-
-    public int GetRandomValue(params RandomSelection[] selections)
-    {
-        float rand = Random.value;
-        float currentProb = 0;
-        foreach (var selection in selections)
-        {
-            currentProb += selection.probability;
-            if (rand <= currentProb)
-                return selection.GetValue();
-        }
-
-        //will happen if the input's probabilities sums to less than 1
-        //throw error here if that's appropriate
-        return -1;
-    }
 
     public void OnAwake()
     {
@@ -72,41 +39,46 @@ public class Demographics
         GetPeerage();
         GetName();
         GetAge();
-        GetEducation(age, peerage);
-        GetOccupation(birthplace, education);
+        GetEducation(age);
+        GetOccupation(education);
         GetMarriage(age);
         GetOrphaned(age);
+        GetCriminal(age);
         GetHeadshot(age, citizenSex, birthplace, occupation);
     }
+
     public void GetBirthplace()
     {
         // NEEDS TO BE WEIGHTED
-        birthplace = demographicsProfile.birthplaces[Random.Range(0,demographicsProfile.birthplaces.Length)];
+        birthplace = demographicsProfile.birthplaces[Random.Range(0, demographicsProfile.birthplaces.Length)];
     }
 
     public void GetSex()
     {
-        // STILL NEEDS TO BE WEIGHTED. OR DOES IT? I DON'T GIVE A FUCK
-        citizenSex = (Sex)Mathf.Round(Random.Range(0, 3));
+        float randSample = Random.value * 100;
+        if (randSample < 5)
+        {
+            citizenSex = Sex.NB;
+        } else { citizenSex = (Sex)Random.Range(0, 2); }
     }
 
     public void GetPeerage()
     {
-        // 95% chance of not being in the peerage
         float randSample = Random.value;
-        if (randSample < .98)
+        // Chance of not being in the peerage
+        if (randSample < 0.95f)
         {
             peerage = Peerage.None;
         } else
         {
-            peerage = (Peerage)(1+Random.Range(0, 3));
+            peerage = (Peerage)(1 + Random.Range(0, 3));
         }
     }
 
     public void GetName()
     {
-        int randName = Random.Range(0, demographicsProfile._surnames.Length);
-        surname = demographicsProfile._surnames[randName];
+        int randName = Random.Range(0, demographicsProfile.surnames.Length);
+        surname = demographicsProfile.surnames[randName];
     }
 
     public void GetAge()
@@ -117,19 +89,44 @@ public class Demographics
         age = (int)Mathf.RoundToInt(randSample);
     }
 
-    public void GetEducation(int age, Peerage peerage)
+    public void GetEducation(int age)
     {
-        // Scale random chance to be educated by the peerage and age of the citizen.
-        // ----------------------------- NEEDS TO BE FIXED, CURRENTLY A LOT OF 18 YEAR OLD DOCTORATES
-        int random = GetRandomValue(
-            new RandomSelection(0, 1, .5f * (4-(int)peerage)),
-            new RandomSelection(1, 4, .5f * (age-12) * ((int)peerage)));
-        education = (Education)random;
+        // Based on buckets of age have chance to be educated
+        float randSample = Random.value;
+        if (age < 8)
+        {
+            education = Education.None;
+        }
+        else if (age < 14 && randSample < 0.8f)
+        {
+            education = (Education)Random.Range(0, 2);
+        }
+        else if (age < 18 && randSample < 0.6f)
+        {
+            education = (Education)Random.Range(0, 3);
+        }
+        else if (age < 24 && randSample < 0.6f)
+        {
+            education = (Education)Random.Range(0, 3);
+        }
+        else if (randSample < 0.3f)
+        {
+            education = (Education)Random.Range(2, 5);
+        }
+        else { education = Education.None; }
     }
 
-    public void GetOccupation(string birthplace, Education education)
+    public void GetOccupation(Education education)
     {
-        // pseudocode to return occupation
+        if (education == Education.None | education == Education.Primary)
+        {
+            int occupationsLength = demographicsProfile.lowoccupations.Length;
+            occupation = demographicsProfile.lowoccupations[Random.Range(0, occupationsLength)];
+        } else
+        {
+            int occupationsLength = demographicsProfile.highoccupations.Length;
+            occupation = demographicsProfile.highoccupations[Random.Range(0, occupationsLength)];
+        }
     }
 
     public void GetMarriage(int age)
@@ -163,6 +160,21 @@ public class Demographics
             isOrphaned = true;
         }
         else isOrphaned = false;
+    }
+
+    public void GetCriminal(int age)
+    {
+        float randSample = Random.value;
+        if (randSample < 0.15f)
+        {
+            isCriminal = true;
+            crime = demographicsProfile.crimes[Random.Range(0, demographicsProfile.crimes.Length)];
+            occupation = "None";
+        } else
+        {
+            isCriminal = false;
+            crime = null;
+        }
     }
 
     public void GetHeadshot(int age, Sex citizenSex, string nationality, string occupation)

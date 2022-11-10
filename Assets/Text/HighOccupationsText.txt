@@ -1,0 +1,54 @@
+﻿Auditor
+Author
+Actuary
+Aeroplane Mechanic
+Aeroplane Cargo Manager
+Proctor
+Nurse
+Nurse
+Banker
+Bespoke Tailor
+Quilter
+Smocker
+Staymaker
+Tailor
+Milliner
+Entrepreneur
+Privateer
+Landowner
+Locomotive Engineer
+Stage Impressario
+Lecturer
+Painter
+Glazier
+Machinist
+Piano Tuner
+Reporter
+Stone Mason
+Typist
+Bridges Engineer
+Steam Engineer
+Barister
+Apothecary
+Politician
+Private Detective
+Technologist
+Logistician
+Inspector
+Translator
+Jeweler
+Lenscarver
+Archaeologist
+Anthropologist
+Astronomer
+Biochemist
+Physicist
+Physician
+Surgeon
+Professor
+Phrenologist
+Egyptologist
+Mesoameritologist
+Historian
+Mathematician
+Zoologist

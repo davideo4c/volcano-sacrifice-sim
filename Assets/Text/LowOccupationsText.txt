@@ -1,0 +1,112 @@
+﻿#None
+Actor
+Attendant
+Circus Freak
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Farmer
+Athlete
+Mechanic
+Porter
+Bellhop
+Boater
+Baker
+Barber
+Bartender
+Trolley Driver
+Butcher
+Meat Cutter
+Clergy
+Clergy
+Clergy
+Scout
+Leech Collector
+Pure Finder
+Tosher
+Mudlark
+Rat Catcher
+Ressurectionist
+Matchstick Maker
+Chimney Sweep
+Funeral Mute
+Page
+Tea Boy
+Servant
+Servant
+Servant
+Servant
+Servant
+Servant
+Servant
+Servant
+Servant
+Servant
+Laborer
+Laborer
+Laborer
+Laborer
+Laborer
+Laborer
+Laundrykeep
+Cook
+Cook
+Sin Eater
+Knocker-Up
+Nipper
+Miner
+Miner
+Miner
+Iceman
+Crossing Sweep
+Lamplighter
+Vagabond
+Constable
+Patroller
+Photographer
+Lettersetter
+Sailor
+Sailor
+Shopkeep
+Bailiff
+Blacksmith
+Cabinet Maker
+Clerk
+Pub Owner
+First Footman
+Second Footman
+Head Groom
+Horse Groom
+Coachkeep
+Gardener
+Groundskeep
+Seamster
+Needlecrafter
+Embroider
+Dentist
+Menseskeeper
+Veterinarian
+Counter
+Trimmer
+Dancer
+Embalmer
+Street Performer
+Autotelegraphist
+Fisher
+Fisher
+Loan Officer
+Window Trimmer
+Pourer
+Caster
+Printmaker
+Tax Collector
+Escort
+Usher
+Typist
