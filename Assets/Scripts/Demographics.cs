@@ -44,7 +44,7 @@ public class Demographics
         GetMarriage(age);
         GetOrphaned(age);
         GetCriminal(age);
-        GetHeadshot(age, citizenSex, birthplace, occupation);
+        GetHeadshot(age, citizenSex, birthplace);
     }
 
     public void GetBirthplace()
@@ -177,7 +177,7 @@ public class Demographics
         }
     }
 
-    public void GetHeadshot(int age, Sex citizenSex, string nationality, string occupation)
+    public void GetHeadshot(int age, Sex citizenSex, string birthplace)
     {
         // pseudocode to return texture2d headshot
     }

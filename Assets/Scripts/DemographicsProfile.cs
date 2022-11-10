@@ -6,7 +6,7 @@ using System.IO;
 [CreateAssetMenu(fileName = "Demographics Profile", menuName ="Scriptable Objects/Demographics")]
 public class DemographicsProfile : ScriptableObject
 {
-// --------- Variables
+    // Variables
     public AnimationCurve ageRange;
 
     public string[] birthplaces;
@@ -18,14 +18,16 @@ public class DemographicsProfile : ScriptableObject
     public TextAsset LowOccupationsText;
 
     public string[] highoccupations;
-    public TextAsset HighOccupationsText;
+    private TextAsset HighOccupationsText;
 
     public string[] crimes;
     public TextAsset CrimesText;
 
-// --------- Helper Functions
-
-
+/// <summary>
+/// Splits a TextAsset by line into a array of strings.
+/// </summary>
+/// <param name="textAsset"></param>
+/// <returns></returns>
     public string[] SplitTextAsset(TextAsset textAsset)
     {
         string[] splitText;
@@ -40,10 +42,9 @@ public class DemographicsProfile : ScriptableObject
         }
         return splitText;
     }
-
-
-
-// ---------- LOAD ALL TEXT ASSETS FROM DEMOGRAPHICS PROFILE
+/// <summary>
+/// Validates Scriptable Object and moves data to string arrays.
+/// </summary>
     public void OnValidate()
     {
         surnames = SplitTextAsset(SurnamesText);
