@@ -18,7 +18,7 @@ public class DemographicsProfile : ScriptableObject
     public TextAsset LowOccupationsText;
 
     public string[] highoccupations;
-    private TextAsset HighOccupationsText;
+    public TextAsset HighOccupationsText;
 
     public string[] crimes;
     public TextAsset CrimesText;

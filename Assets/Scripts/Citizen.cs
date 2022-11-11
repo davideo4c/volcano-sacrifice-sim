@@ -7,13 +7,21 @@ using UnityEngine.InputSystem;
 public class Citizen : MonoBehaviour
 {
     public Demographics demographics = new Demographics();
-    public DemographicsProfile demographicsProfile;
+    public DemographicsProfile demographicsProfile;    
+    public Headshot headshot = new Headshot();
+    public HeadshotTextures headshotTextures;
     public bool isSacrificed;
     public InputAction mouseDown;
+    Material headshotMaterial;
+    bool isMouseDown = false;
+
 
     public void Awake()
     {
+        headshotMaterial = GetComponent<Renderer>().material;
+        headshot.headshotMaterial = headshotMaterial;
         demographics.demographicsProfile = demographicsProfile;
+        headshot.headshotTextures = headshotTextures;
     }
 
     public void Start()
@@ -21,15 +29,21 @@ public class Citizen : MonoBehaviour
         // Establish init conditions, not sacrificed
         isSacrificed = false;
         demographics.GenerateDemographics();
+        headshotMaterial = headshot.GetHeadshot(demographics.age, demographics.citizenSex);
         LogDemographics();
     }
 
     public void Update()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && !isMouseDown)
         {
             demographics.GenerateDemographics();
+            headshotMaterial = headshot.GetHeadshot(demographics.age, demographics.citizenSex);
             LogDemographics();
+            isMouseDown = true;
+        } else if (!Mouse.current.leftButton.isPressed)
+        {
+            isMouseDown = false;
         }
     }
     public void LogDemographics()

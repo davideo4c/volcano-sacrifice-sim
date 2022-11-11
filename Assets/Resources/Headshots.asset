@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb414bf52960144baadb9d91d00feff, type: 3}
+  m_Name: Headshots
+  m_EditorClassIdentifier: 
+  headshotMaterial: {fileID: 2100000, guid: f2dc56da08c3f8a448a0c4129dea760b, type: 2}
+  ProfileMaleAdult:
+  - {fileID: 2800000, guid: 62d65fce49712284381529542f1dcdcd, type: 3}
+  - {fileID: 2800000, guid: ae0dd2cb091ab7c4ca91c0b7301d49f3, type: 3}
+  - {fileID: 2800000, guid: d3fc2a288960c9c4086fad6f2ee7bbbe, type: 3}
+  - {fileID: 2800000, guid: dcd5fb3126e44c74493ab16d9d27c42e, type: 3}
+  ProfileFemaleAdult:
+  - {fileID: 2800000, guid: e6435eb3f0b13c546b14039e1ffb1104, type: 3}
+  - {fileID: 2800000, guid: 59ca785736d5f7f47bc896c33e52ba6d, type: 3}
+  - {fileID: 2800000, guid: eb8126efdf96df247b8efee794f75d55, type: 3}
+  MaleHair:
+  - {fileID: 2800000, guid: abfb45b1dfd796544ab63a9d772aacae, type: 3}
+  - {fileID: 2800000, guid: adc0938dfddd7f6499e9fbda398c428b, type: 3}
+  - {fileID: 2800000, guid: 03715e1ce8b92c541811aefcadcec162, type: 3}
+  - {fileID: 2800000, guid: 495f94e0f021dd14fa7fcc3ec8d0ac37, type: 3}
+  FemaleHair:
+  - {fileID: 2800000, guid: 0fc51e6862e30c94ead85b15f378a2da, type: 3}
+  - {fileID: 2800000, guid: a22ad73cd872b494982f9789f27e86cb, type: 3}

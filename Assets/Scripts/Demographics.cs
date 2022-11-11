@@ -23,7 +23,6 @@ public class Demographics
     public bool isCriminal;
     public string crime;
 
-    public Texture2D headshot;
     public DemographicsProfile demographicsProfile;
 
     // ----------------------------- HELPER STRUCTS --------------------------- //
@@ -44,7 +43,6 @@ public class Demographics
         GetMarriage(age);
         GetOrphaned(age);
         GetCriminal(age);
-        GetHeadshot(age, citizenSex, birthplace);
     }
 
     public void GetBirthplace()
@@ -175,11 +173,6 @@ public class Demographics
             isCriminal = false;
             crime = null;
         }
-    }
-
-    public void GetHeadshot(int age, Sex citizenSex, string birthplace)
-    {
-        // pseudocode to return texture2d headshot
     }
 
 }
